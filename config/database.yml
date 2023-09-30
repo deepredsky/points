@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: points_production
-  username: points
-  password: <%= ENV["POINTS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
