@@ -14,15 +14,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_26_103047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "events", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "task_id", null: false
     t.integer "point"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_events_on_task_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["task_id"], name: "index_activities_on_task_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -34,11 +34,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_26_103047) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "events", "tasks"
-  add_foreign_key "events", "users"
+  add_foreign_key "activities", "tasks"
+  add_foreign_key "activities", "users"
 end

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title>Points</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+    <main class="container">
+<nav>
+  <ul>
+    <li><h1>Points!</h1></li>
+  </ul>
+  <ul>
+    <li>
+      <% if user_signed_in? %>
+        <%= button_to 'Sign Out', session_path, class: 'sign_out', method: :delete %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-<%= type %>">
+          <%= msg %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>

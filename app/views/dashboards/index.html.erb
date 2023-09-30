@@ -1,2 +1,114 @@
-<h1>Dashboards#index</h1>
-<p>Find me in app/views/dashboards/index.html.erb</p>
+<section>
+  <hgroup>
+  </hgroup>
+</div>
+</section>
+
+<div class="grid">
+  <div>
+    <article>
+      <header>
+        Total Points this week
+      </header>
+      <h1><%= @points %></h1>
+      <footer>
+        <p>Total pending <%= @pending_points %></p>
+      </footer>
+    </article>
+  </div>
+  <div>
+    <section>
+      <article>
+        <%= form_with url: activities_path do |f|  %>
+          <h2>Add activity</h2>
+
+          <table>
+            <% @tasks.each do |task| %>
+              <tr>
+                <td>
+                  <%= f.check_box :tasks, { multiple: true },  task.id, false %>
+                </td>
+                <td>
+                  <%= task.name  %>
+                </td>
+                <td>
+                  <%= task.point %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+          <br>
+          <%= f.submit :add %>
+        <% end %>
+      </article>
+    </section>
+  </div>
+</div>
+
+<section>
+    <article>
+      <h2>Review activities</h2>
+
+      <% if @activities_to_review.empty? %>
+        <div>
+          Nothing to review
+        </div>
+      <% else %>
+        <table>
+          <% @activities_to_review.each do |activity| %>
+            <tr>
+              <td>
+                <%= activity.user.email %>
+              </td>
+              <td>
+                <%= activity.task.name %>
+              </td>
+              <td>
+                <%= activity.point %>
+              </td>
+              <td>
+                <%= activity.created_at %>
+              </td>
+              <td>
+                <%= activity.status %>
+              </td>
+              <td>
+                <%= button_to "Approve", activity_activity_approvals_path(activity) %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </article>
+</section>
+
+<section>
+  <article>
+    <h2>My activities</h2>
+
+    <% if @my_activities.empty? %>
+      <div>
+        No activities
+      </div>
+    <% else %>
+      <table>
+        <% @my_activities.each do |activity| %>
+          <tr>
+            <td>
+              <%= activity.task.name %>
+            </td>
+            <td>
+              <%= activity.point %>
+            </td>
+            <td>
+              <%= activity.created_at %>
+            </td>
+            <td>
+              <%= activity.status %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </article>
+</section>

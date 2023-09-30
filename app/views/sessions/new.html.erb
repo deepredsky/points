@@ -1,2 +1,27 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="text-center">
+  <h1>Sign In</h1>
+
+  <%= form_with(model: @user, url: sessions_path, local: true) do |f| %>
+    <% if f.object.errors.full_messages.any? %>
+      <ul class='error'>
+        <% f.object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class='row'>
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: 'Please enter email id' %>
+    </div>
+
+    <div class='row'>
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: 'Please enter password' %>
+    </div>
+
+    <div class='row'>
+      <%= f.submit 'Sign In' %>
+    </div>
+  <% end %>
+</div>
