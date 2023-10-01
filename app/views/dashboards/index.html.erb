@@ -1,13 +1,30 @@
 <div class="grid">
   <div>
     <article>
-      <header>
-        Total Points this week
-      </header>
-      <h1><%= @points %></h1>
-      <footer>
-        <p>Total pending <%= @pending_points %></p>
-      </footer>
+      <div class="grid">
+      <div>
+        <header>
+          <%= @my_points.label %><br>
+          Total Points this week
+        </header>
+        <h1><%= @my_points.weekly.approved %></h1>
+        <footer>
+          <p>Total pending <%= @my_points.weekly.pending %></p>
+        </footer>
+      </div>
+      <% @friends_points.each do |point| %>
+      <div>
+        <header>
+          <%= point.label %><br>
+          Total Points this week
+        </header>
+        <h1><%= point.weekly.approved %></h1>
+        <footer>
+          <p>Total pending <%= point.weekly.pending %></p>
+        </footer>
+      </div>
+      <% end %>
+      </div>
     </article>
   </div>
   <div>

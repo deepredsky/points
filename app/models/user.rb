@@ -4,4 +4,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
 
   has_many :activities
+  has_many :connections
+  has_many :friends, through: :connections
 end
