@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :activities, only: [:index, :create] do
     resources :activity_approvals, only: :create
   end
+
+  resources :bulk_activities_approvals, only: :create
 end

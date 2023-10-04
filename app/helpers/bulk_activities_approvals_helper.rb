@@ -1,0 +1,2 @@
+module BulkActivitiesApprovalsHelper
+end

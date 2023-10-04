@@ -65,30 +65,37 @@
           Nothing to review
         </div>
       <% else %>
-        <table>
-          <% @activities_to_review.each do |activity| %>
-            <tr>
-              <td>
-                <%= activity.user.email %>
-              </td>
-              <td>
-                <%= activity.task.name %>
-              </td>
-              <td>
-                <%= activity.point %>
-              </td>
-              <td>
-                <%= activity.created_at %>
-              </td>
-              <td>
-                <%= activity.status %>
-              </td>
-              <td>
-                <%= button_to "Approve", activity_activity_approvals_path(activity) %>
-              </td>
-            </tr>
+          <table>
+            <% @activities_to_review.each do |activity| %>
+              <tr>
+                <td>
+                  <%= check_box_tag "activities[]", activity.id, true, form: 'bulk_approval_form'  %>
+                </td>
+                <td>
+                  <%= activity.user.email %>
+                </td>
+                <td>
+                  <%= activity.task.name %>
+                </td>
+                <td>
+                  <%= activity.point %>
+                </td>
+                <td>
+                  <%= activity.created_at %>
+                </td>
+                <td>
+                  <%= activity.status %>
+                </td>
+                <td>
+                  <%= button_to "Approve", activity_activity_approvals_path(activity) %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+
+          <%= form_with url: bulk_activities_approvals_path, id: 'bulk_approval_form' do |f|  %>
+            <%= f.submit "Approve all" %>
           <% end %>
-        </table>
       <% end %>
     </article>
 </section>
