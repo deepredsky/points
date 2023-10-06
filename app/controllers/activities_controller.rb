@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
 
   def create
     Task.where(id: params[:tasks]).each do |task|
-      current_user.activities.create(task: task, point: task.point, status: :pending)
+      current_user.activities.create(task: task, name: task.name, point: task.point, status: :pending)
     end
 
     redirect_to root_path, notice: "Activities added"

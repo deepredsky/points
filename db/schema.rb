@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_01_122602) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_06_120940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "task_id", null: false
+    t.bigint "task_id"
     t.integer "point"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["task_id"], name: "index_activities_on_task_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
