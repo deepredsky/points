@@ -9,4 +9,16 @@ class ActivitiesController < ApplicationController
 
     redirect_to root_path, notice: "Activities added"
   end
+
+  def destroy
+    activity = current_user.activities.find(params[:id])
+
+    if activity
+      activity.destroy
+
+      redirect_to root_path, notice: "Activities deleted"
+    else
+      redirect_to root_path, notice: "Activities not fonud"
+    end
+  end
 end

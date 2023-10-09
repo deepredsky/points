@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :new]
   resource :session, only: :destroy
-  resources :activities, only: [:index, :create] do
+  resources :activities, only: [:index, :create, :destroy] do
     resources :activity_approvals, only: :create
   end
 

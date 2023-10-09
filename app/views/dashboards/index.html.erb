@@ -81,10 +81,10 @@
                   <%= activity.point %>
                 </td>
                 <td>
-                  <%= activity.created_at %>
+                  <%= activity.created_at.to_fs(:short) %>
                 </td>
                 <td>
-                  <%= activity.status %>
+                  <%= activity_status(activity) %>
                 </td>
                 <td>
                   <%= button_to "Approve", activity_activity_approvals_path(activity) %>
@@ -119,10 +119,13 @@
               <%= activity.point %>
             </td>
             <td>
-              <%= activity.created_at %>
+              <%= activity.created_at.to_fs(:short) %>
             </td>
             <td>
-              <%= activity.status %>
+                <%= activity_status(activity) %>
+            </td>
+            <td>
+              <%= button_to "🗑️", activity_path(activity), method: :destroy, class: 'delete-button'  %>
             </td>
           </tr>
         <% end %>
