@@ -125,7 +125,7 @@
                 <%= activity_status(activity) %>
             </td>
             <td>
-              <%= button_to "🗑️", activity_path(activity), method: :destroy, class: 'delete-button'  %>
+              <%= button_to "🗑️", activity_path(activity), method: :delete, class: 'delete-button'  %>
             </td>
           </tr>
         <% end %>
