@@ -1,60 +1,108 @@
-<div class="grid">
-  <div>
-    <article>
-      <div class="grid">
-      <div>
+<section>
+  <article class="table-container">
+      <div class="column">
         <header>
-          <%= @my_points.label %><br>
-          Total Points this week
+          <span align="center"><%= @my_points.label %></span>
         </header>
-        <h1><%= @my_points.weekly.approved %></h1>
-        <footer>
-          <p>Total pending <%= @my_points.weekly.pending %></p>
-        </footer>
+        <div class="grid">
+          <div class="data-column">
+            <header>
+              Today
+            </header>
+            <h1><%= @my_points.daily.approved %></h1>
+            <footer>
+              <small>Pending <%= @my_points.daily.pending %></small>
+            </footer>
+          </div>
+
+          <div class="data-column">
+            <header>
+              This week
+            </header>
+            <h1><%= @my_points.weekly.approved %></h1>
+            <footer>
+              <small>Pending <%= @my_points.weekly.pending %></small>
+            </footer>
+          </div>
+
+          <div class="data-column">
+            <header>
+              This month
+            </header>
+            <h1><%= @my_points.monthly.approved %></h1>
+            <footer>
+              <small>Pending <%= @my_points.monthly.pending %></small>
+            </footer>
+          </div>
+        </div>
       </div>
       <% @friends_points.each do |point| %>
-      <div>
-        <header>
-          <%= point.label %><br>
-          Total Points this week
-        </header>
-        <h1><%= point.weekly.approved %></h1>
-        <footer>
-          <p>Total pending <%= point.weekly.pending %></p>
-        </footer>
-      </div>
-      <% end %>
-      </div>
-    </article>
-  </div>
-  <div>
-    <section>
-      <article>
-        <%= form_with url: activities_path do |f|  %>
-          <h2>Add activity</h2>
+        <div class="column">
+          <header>
+            <span align="center"><%= point.label %></span>
+          </header>
+          <div class="grid">
+            <div class="data-column">
+              <header>
+                Today
+              </header>
+              <h1><%= point.daily.approved %></h1>
+              <footer>
+                <small>Pending <%= point.daily.pending %></small>
+              </footer>
+            </div>
 
-          <table>
-            <% @tasks.each do |task| %>
-              <tr>
-                <td>
-                  <%= f.check_box :tasks, { multiple: true },  task.id, false %>
-                </td>
-                <td>
-                  <%= task.name  %>
-                </td>
-                <td>
-                  <%= task.point %>
-                </td>
-              </tr>
-            <% end %>
-          </table>
-          <br>
-          <%= f.submit "Add activity" %>
+            <div class="data-column">
+              <header>
+                This week
+              </header>
+              <h1><%= point.weekly.approved %></h1>
+              <footer>
+                <small>Pending <%= point.weekly.pending %></small>
+              </footer>
+            </div>
+
+
+            <div class="data-column">
+              <header>
+                This month
+              </header>
+              <h1><%= point.monthly.approved %></h1>
+              <footer>
+                <small>Pending <%= point.monthly.pending %></small>
+              </footer>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </article>
+</section>
+
+<section>
+  <article>
+    <%= form_with url: activities_path do |f|  %>
+      <h2>Add activity</h2>
+
+      <table>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td>
+              <%= f.check_box :tasks, { multiple: true },  task.id, false %>
+            </td>
+            <td>
+              <%= task.name  %>
+            </td>
+            <td>
+              <%= task.point %>
+            </td>
+          </tr>
         <% end %>
-      </article>
-    </section>
-  </div>
-</div>
+      </table>
+      <br>
+      <%= f.submit "Add activity" %>
+    <% end %>
+  </article>
+</section>
 
 <section>
     <article>
