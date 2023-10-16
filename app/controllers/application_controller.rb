@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user
 
   def current_user
-    @current_user ||= session[:user_id] && User.find_by(id: session[:user_id])
+    @current_user ||= login_user
   end
 
   def user_signed_in?
@@ -17,5 +17,12 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_authenticated
     redirect_to root_path, flash: { info: 'You are already logged in.'} if user_signed_in?
+  end
+
+  private
+
+  def login_user
+    user_id = session[:user_id] || cookies.signed[:user_id]
+    user_id && User.find_by(id: user_id)
   end
 end
