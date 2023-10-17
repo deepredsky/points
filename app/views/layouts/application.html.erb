@@ -13,9 +13,10 @@
     <header>
     <main class="container">
 <nav>
-  <ul>
-    <li><h1>Points!</h1></li>
-  </ul>
+  <h1>
+    <%= link_to "Points!", root_path %>
+  </h1>
+
   <ul>
     <li>
       <% if user_signed_in? %>
