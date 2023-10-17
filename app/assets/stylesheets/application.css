@@ -78,3 +78,10 @@ form.button_to {
   background-color: var(--primary);
   color: var(--primary-inverse);
 }
+
+.alert-notice {
+  color: #1d1301;
+  background: #ffb658;
+  padding: 16px;
+  font-weight: 500;
+}
