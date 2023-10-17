@@ -88,9 +88,9 @@
           <tr>
             <td>
               <%= f.check_box :tasks, { multiple: true },  task.id, false %>
-            </td>
-            <td>
-              <%= task.name  %>
+              <label for="tasks_<%= task.id %>">
+                <%= task.name  %>
+              </label>
             </td>
             <td>
               <%= task.point %>
