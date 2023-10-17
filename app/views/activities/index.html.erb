@@ -1,2 +1,35 @@
-<h1>Activities#index</h1>
-<p>Find me in app/views/activities/index.html.erb</p>
+<section>
+  <article>
+    <h2>My activities</h2>
+
+    <% if @activities.empty? %>
+      <div>
+        No activities
+      </div>
+    <% else %>
+      <table>
+        <% @activities.each do |activity| %>
+          <tr>
+            <td>
+              <%= activity.name %>
+            </td>
+            <td>
+              <%= activity.point %>
+            </td>
+            <td>
+              <%= activity.created_at.to_fs(:short) %>
+            </td>
+            <td>
+                <%= activity_status(activity) %>
+            </td>
+            <td>
+              <%= button_to "🗑️", activity_path(activity), method: :delete, class: 'delete-button'  %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </article>
+</section>
+
+<%== pagy_nav(@pagy) %>

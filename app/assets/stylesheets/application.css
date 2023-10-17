@@ -65,3 +65,18 @@ form.button_to {
   display: grid;
   align-content: center;
 }
+
+.pagy-nav {
+  justify-content: center;
+}
+
+.pagy-nav span {
+  padding: 5px;
+  margin: 5px;
+}
+
+.pagy-nav span.active {
+  padding: 5px 10px;
+  background-color: var(--primary);
+  color: var(--primary-inverse);
+}

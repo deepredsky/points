@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
+    @pagy, @activities = pagy(current_user.activities)
   end
 
   def create

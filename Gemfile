@@ -68,3 +68,5 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "pagy", "~> 6.1"
